@@ -16,7 +16,7 @@ public class Animals {
         int menuItem;
 
         do {
-            System.out.println("");             // empty string
+            System.out.println("");
             System.out.println("Menu:");
             System.out.println("1. Show animals list");
             System.out.println("2. Add new animal to list");
@@ -25,6 +25,33 @@ public class Animals {
 
 
             menuItem = in.nextInt();
+
+            switch (menuItem) {
+
+                case 1:
+                    System.out.println("List of animals:");
+
+                    for (int i=0; i<arr.size(); i++)
+                        System.out.println(arr.get(i));
+                    break;
+
+                case 2:
+                    System.out.println("Enter animal name:");
+                    String name = in.nextLine();
+                    name = in.nextLine();
+
+                    arr.add(name);
+
+                    System.out.println("Congrats! Animal " + name + " added to list!");
+                    break;
+
+                case 3:
+                    quit = true;
+                    break;
+
+                default:
+                    System.out.println("Wrong menu item");
+            }
 
         } while (!quit);
 
