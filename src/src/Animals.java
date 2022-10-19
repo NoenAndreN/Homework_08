@@ -7,5 +7,12 @@ public class Animals {
 
         ArrayList<String> arr = new ArrayList<>();
 
+        arr.add("Dog");
+        arr.add("Cat");
+        arr.add("Rabbit");
+
+        boolean quit = false;
+
+        int menuItem;
     }
 }
