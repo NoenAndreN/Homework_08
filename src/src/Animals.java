@@ -1,6 +1,18 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
+
+class Animal<Name, Childs> {
+    Name name;
+    Childs childs;
+
+    public Animal(Name name, Childs childs) {
+        this.name = name;
+        this.childs = childs;
+    }
+}
+
 public class Animals {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
