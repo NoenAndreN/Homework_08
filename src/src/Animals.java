@@ -14,14 +14,25 @@ class Animal<Name, Childs> {
 }
 
 public class Animals {
+
+    static boolean checkInteger(String s) {
+        try  {
+            Integer value = Integer.parseInt(s);
+            if (value < 0) return false;
+            return true;
+        } catch (Exception ex) {
+            return false;
+        }
+    }
+
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
 
-        ArrayList<String> arr = new ArrayList<>();
+        ArrayList<Animal> arr = new ArrayList<>();
 
-        arr.add("Dog");
-        arr.add("Cat");
-        arr.add("Rabbit");
+        arr.add(new Animal<String, Integer>("Dog",4));
+        arr.add(new Animal<String, Integer>("Cat",2));
+        arr.add(new Animal<String, Integer>("Rabbit",12));
 
         boolean quit = false;
 
@@ -44,7 +55,7 @@ public class Animals {
                     System.out.println("List of animals:");
 
                     for (int i=0; i<arr.size(); i++)
-                        System.out.println(arr.get(i));
+                        System.out.println(arr.get(i).name+", childs: "+arr.get(i).childs);
                     break;
 
                 case 2:
@@ -52,9 +63,23 @@ public class Animals {
                     String name = in.nextLine();
                     name = in.nextLine();
 
-                    arr.add(name);
+                    Integer childs;
 
-                    System.out.println("Congrats! Animal " + name + " added to list!");
+                    while (true) {
+                        System.out.println("Enter childs number:");
+                        String s = in.nextLine();
+
+                        if (checkInteger(s)) {
+                            childs = Integer.parseInt(s);
+                            break;
+                        } else {
+                            System.out.println("Error! Enter integer number");
+                        }
+                    }
+
+                    arr.add(new Animal<String, Integer>(name,childs));
+
+                    System.out.println("Congrats! Animal " + name + " with childs " + childs + " added to list!");
                     break;
 
                 case 3:
@@ -67,6 +92,7 @@ public class Animals {
 
         } while (!quit);
 
+        in.close();
         System.out.println("Bye-bye");
 
     }
